@@ -1,0 +1,109 @@
+package com.company.AbstrFactory;
+//Modelele abstracte ale fabricii funcționează în jurul unei super-fabrici care creează alte fabrici.
+enum TipMasiniDeSpalat{
+        automate, semiautomate
+    }
+    enum Model{
+        СМА_60У10500,F6101D,WW90TA047AX,WD90T754DBX
+    }
+
+    abstract class MasiniDeSpalat
+    {
+        MasiniDeSpalat(TipMasiniDeSpalat tip, Model model){
+            this.tip = tip;
+            this.model = model;
+            this.brand = brand;
+        }
+        abstract void construct();
+        TipMasiniDeSpalat tip = null;
+        Model model = null;
+        Brand brand = null;
+
+        TipMasiniDeSpalat getType()
+        {
+            return tip;
+        }
+        void setType(TipMasiniDeSpalat tip)
+        {
+            this.tip = tip;
+        }
+        Model getModel()
+        {
+            return model;
+        }
+        void setModel(Model model)
+        {
+            this.model = model;
+        }
+        Brand getBrand()
+        {
+            return brand;
+        }
+        void setBrand(Brand brand)
+        {
+            this.brand = brand;
+        }
+        @Override
+        public String toString()
+        {
+            return "Model -" +model + "produs de catre Atlant";
+        }
+
+    }
+    class MasiniAutomate extends MasiniDeSpalat
+    {
+      MasiniAutomate(Model model, Brand brand)
+      {
+          super( TipMasiniDeSpalat.automate,model);
+          construct();
+      }
+        @Override
+        protected void construct() {
+            System.out.println("Analiza masinilor automate");
+        }
+    }
+class MasiniSemiAutomate extends MasiniDeSpalat
+{
+    MasiniSemiAutomate(Model model, Brand brand)
+    {
+        super( TipMasiniDeSpalat.semiautomate,model);
+        construct();
+    }
+    @Override
+    protected void construct() {
+        System.out.println("Analiza masinilor semi-automate");
+    }
+}
+    enum Brand{
+        Atlant,Vesta,Samsung
+    }
+    class BrandMasini
+    {
+        static MasiniDeSpalat buildMasiniDeSpalat(TipMasiniDeSpalat tip)
+        {
+            MasiniDeSpalat masiniDeSpalat = null;
+            switch (tip)
+            {
+                case automate:
+                    masiniDeSpalat = new MasiniAutomate(Model.СМА_60У10500,Brand.Atlant);
+                    break;
+                case semiautomate:
+                    masiniDeSpalat = new MasiniSemiAutomate(Model.WW90TA047AX, Brand.Atlant);
+                    break;
+                default:
+                    break;
+            }
+            return masiniDeSpalat;
+        }
+    }
+
+   class AbstractDesign
+   {
+       public static void main(String[] args)
+       {
+           System.out.println(BrandMasini.buildMasiniDeSpalat(TipMasiniDeSpalat.automate));
+           System.out.println(BrandMasini.buildMasiniDeSpalat(TipMasiniDeSpalat.semiautomate));
+       }
+   }
+
+
