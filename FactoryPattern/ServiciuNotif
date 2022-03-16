@@ -1,0 +1,10 @@
+package com.company.factorypattern;
+
+public class ServiciuDeNotificare {
+    public static void main (String [] args)
+    {
+        NotifFactory notifFactory = new NotifFactory();
+        Notification notification = notifFactory.createNotification("Email");
+        notification.notifyUser();
+    }
+}
