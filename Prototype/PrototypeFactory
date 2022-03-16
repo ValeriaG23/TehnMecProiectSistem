@@ -1,0 +1,20 @@
+package com.company.Prototype;
+
+public class PrototypeFactory {
+    public  static  class  Categorie
+    {
+        public static final String JOCURI = "jocuri";
+        public  static  final  String  CARTI  =  " carti" ;
+        public  static  final  String  EDITOARE  =  " editoare " ;
+    }
+    private  static  java.util.Map < String , PrototypeCapable > prototypes =  new  java.util.HashMap < String , PrototypeCapable > ();
+    static
+    {
+        prototypes.put(Categorie.JOCURI, new Jocuri());
+        prototypes.put(Categorie.CARTI, new Carti());
+        prototypes.put(Categorie.EDITOARE, new Editoare());
+    }
+    public static PrototypeCapable getInstance(final String s) throws CloneNotSupportedException {
+        return ((PrototypeCapable) prototypes.get(s)).clone();
+    }
+}
