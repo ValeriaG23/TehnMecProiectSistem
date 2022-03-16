@@ -1,0 +1,20 @@
+package com.company.factorypattern;
+
+public class NotifFactory {
+    public Notification createNotification(String proba)
+    {
+        if (proba == null || proba.isEmpty())
+            return null;
+        switch (proba){
+            case"Message":
+                return new MessageNotification();
+            case "Email":
+                return new EmailNotification();
+            case "Push":
+                return new PushNotification();
+            default:
+                throw new IllegalArgumentException("Proba nerecunoscuta" +proba);
+        }
+
+    }
+}
