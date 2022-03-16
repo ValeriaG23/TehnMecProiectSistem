@@ -1,0 +1,9 @@
+package com.company.factorypattern;
+
+public class EmailNotification implements Notification{
+
+    @Override
+    public void notifyUser() {
+        System.out.println("Veti primi notificarea printr-un email");
+    }
+}
