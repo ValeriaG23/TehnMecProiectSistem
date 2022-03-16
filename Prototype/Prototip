@@ -1,0 +1,31 @@
+package com.company.Prototype;
+//Prototipul ne permite să ascundem de client complexitatea realizării de noi instanțe.
+// Conceptul este de a copia un obiect existent, mai degrabă decât de a crea o instanță nouă de la zero,
+// //ceva care poate include operațiuni costisitoare.
+public class Prototype {
+    public static void main(String[] args) {
+
+
+        try{
+            System.out.println("------------------------------------");
+
+            String jocuriPrototype = PrototypeFactory.getInstance(PrototypeFactory.Categorie.JOCURI).toString();
+            System.out.println(jocuriPrototype);
+
+            System.out.println("------------------------------------");
+
+            String cartiPrototype = PrototypeFactory.getInstance(PrototypeFactory.Categorie.CARTI).toString();
+            System.out.println(cartiPrototype);
+
+            System.out.println("------------------------------------");
+
+            String editoarePrototype = PrototypeFactory.getInstance(PrototypeFactory.Categorie.EDITOARE).toString();
+            System.out.println(editoarePrototype);
+
+            System.out.println("------------------------------------");
+
+        } catch(CloneNotSupportedException exception){
+            exception.printStackTrace();
+        }
+    }
+}
