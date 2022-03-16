@@ -1,0 +1,122 @@
+package com.company.Builder;
+//Este folosit pentru a construi un obiect complex pas cu pas, iar pasul final va returna obiectul.
+
+public class Project implements ProjectPlan{
+    private String planningEtap;
+    private String controlEtap;
+    private String creationEtap;
+    private String executionEtap;
+
+    @Override
+    public void setPlanningEtap(String planningEtap) {
+        this.planningEtap = planningEtap;
+    }
+
+    @Override
+    public void setControlEtap(String controlEtap) {
+        this.controlEtap = controlEtap;
+    }
+
+    @Override
+    public void setCreationEtap(String creationEtap) {
+        this.creationEtap = creationEtap;
+    }
+
+    @Override
+    public void setExecutionEtap(String executionEtap) {
+        this.executionEtap = executionEtap;
+    }
+}
+
+interface ProjectBuilder
+{
+    public void buildPlanningEtap();
+    public void buildControlEtap();
+    public void buildCreationEtap();
+    public void buildExecutionEtap();
+
+
+    Project getProject();
+}
+ class ProjectManagerBuilder implements ProjectBuilder
+ {
+     private Project project;
+
+     public ProjectManagerBuilder(){
+         this.project = new Project();
+     }
+     @Override
+     public void buildPlanningEtap() {
+         project.setPlanningEtap("Etapa de analiza");
+     }
+
+     @Override
+     public void buildControlEtap() {
+         project.setControlEtap("Etapa de control");
+     }
+
+     @Override
+     public void buildCreationEtap() {
+         project.setCreationEtap("Etapa de creare a sarcinilor");
+     }
+
+     @Override
+     public void buildExecutionEtap() {
+         project.setExecutionEtap("Etapa de executie a proiectului final");
+     }
+
+     @Override
+     public Project getProject() {
+         return project;
+     }
+ }
+  class FrontEndDev implements ProjectBuilder
+  {
+    private Project project;
+    public FrontEndDev(ProjectBuilder projectManagerBuilder)
+    {
+        this.project = new Project();
+    }
+      @Override
+      public void buildPlanningEtap() {
+          project.setPlanningEtap("Analiza sarcinilor");
+      }
+
+      @Override
+      public void buildControlEtap() {
+          project.setControlEtap("Etapa de control");
+      }
+
+      @Override
+      public void buildCreationEtap() {
+          project.setCreationEtap("Etapa de creare propriu-zisa a codului");
+      }
+
+      @Override
+      public void buildExecutionEtap() {
+          project.setExecutionEtap("Etapa de executie a programului");
+      }
+
+      @Override
+      public Project getProject() {
+          return project;
+      }
+
+
+      public void interfaceProject() {
+      }
+  }
+
+
+    class Builder
+{
+    public static void main(String[] args)
+    {
+        ProjectBuilder projectManagerBuilder = new ProjectManagerBuilder();
+        FrontEndDev frontEndDev = new FrontEndDev(projectManagerBuilder);
+
+        frontEndDev.interfaceProject();
+        Project project = projectManagerBuilder.getProject();
+        System.out.println("FrontEndDev a realizat:" + project);
+    }
+}
