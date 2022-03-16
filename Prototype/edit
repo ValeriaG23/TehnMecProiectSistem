@@ -1,0 +1,24 @@
+package com.company.Prototype;
+
+public class Editoare implements  PrototypeCapable{
+    private String name;
+
+    public  String  getName () {
+        return name;
+    }
+
+    public  void  setName ( String  name ) {
+        this.name = name;
+    }
+
+    @Override
+    public Editoare clone() throws CloneNotSupportedException {
+        System.out.println("Cloning Edit object ... ");
+        return (Editoare) super.clone();
+    }
+
+    @Override
+    public  String  toString () {
+        return "Editoare";
+    }
+}
