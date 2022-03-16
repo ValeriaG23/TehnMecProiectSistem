@@ -1,0 +1,5 @@
+package com.company.factorypattern;
+//definește o interfață  și lasă subclasele să decidă ce obiect să instanțieze.
+public interface Notification {
+    void notifyUser();
+}
