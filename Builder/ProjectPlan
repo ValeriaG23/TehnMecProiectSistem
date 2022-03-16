@@ -1,0 +1,8 @@
+package com.company.Builder;
+
+public interface ProjectPlan {
+    public void setPlanningEtap(String planningEtap);
+    public void setControlEtap(String controlEtap);
+    public void setCreationEtap(String creationEtap);
+    public void setExecutionEtap(String executionEtap);
+}
