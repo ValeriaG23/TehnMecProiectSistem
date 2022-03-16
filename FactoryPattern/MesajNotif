@@ -1,0 +1,10 @@
+package com.company.factorypattern;
+
+public class MessageNotification implements Notification{
+    @Override
+    public void notifyUser()
+    {
+
+        System.out.println (" Veti primi notificarea printr-un mesaj");
+    }
+}
