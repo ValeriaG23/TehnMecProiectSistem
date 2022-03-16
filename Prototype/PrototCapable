@@ -1,0 +1,6 @@
+package com.company.Prototype;
+
+public  interface  PrototypeCapable  extends  Cloneable {
+
+    public  PrototypeCapable  clone () throws  CloneNotSupportedException ;
+}
