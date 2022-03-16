@@ -1,0 +1,24 @@
+package com.company.Prototype;
+
+public class Carti implements  PrototypeCapable {
+    private String name;
+
+    public  String  getName () {
+        return name;
+    }
+
+    public  void  setName ( String  name ) {
+        this.name = name;
+    }
+
+    @Override
+    public Carti clone() throws CloneNotSupportedException {
+        System.out.println("Cloning Book object ... ");
+        return (Carti) super.clone();
+    }
+
+    @Override
+    public  String  toString () {
+        return "Carti";
+    }
+}
